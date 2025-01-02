@@ -10,7 +10,7 @@ interface ColumnProps {
 
 export const Column: React.FC<ColumnProps> = ({ listTitle, index, listTasks }) => {
   return (
-    <div>
+    <div className="w-fit">
       <Draggable draggableId={`column-${index}`} index={index}>
         {(provided: DraggableProvided) => (
           <div

@@ -20,13 +20,8 @@ const CardItem: React.FC<CardItemProps> = ({ task, isDragging, provided }) => {
   const { dispatch } = boardContext;
 
   return (
-    <li
-      className="w-[300px] relative"
-      ref={provided.innerRef}
-      {...provided.draggableProps}
-      {...provided.dragHandleProps}
-    >
-      <Card className={`${cn(isDragging ? 'bg-slate-50' : '')}`}>
+    <li className="w-[95%]" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+      <Card className={`${cn(isDragging ? 'bg-slate-50' : '')} mb-2`}>
         <CardHeader className="pb-3">
           <div className="flex justify-between items-center">
             <CardTitle>{task.task}</CardTitle>

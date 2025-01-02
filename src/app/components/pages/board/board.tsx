@@ -40,9 +40,9 @@ export const BoardPage = () => {
           <Droppable droppableId="board" direction="horizontal" type="COLUMN">
             {provided => (
               <ul
-                className={`grid p-[1.25rem] grid-cols-${Object.keys(boardState.ordered).length} gap-${
+                className={`p-[1.25rem] grid-cols-${Object.keys(boardState.ordered).length} gap-${
                   Object.keys(boardState.ordered).length
-                } w-full`}
+                } w-full inline-flex`}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
