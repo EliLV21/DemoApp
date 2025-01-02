@@ -1,7 +1,5 @@
 import { NavBar } from '../../shared/nav/nav';
 
-const ExampleCarouselImage = ({ text }: { text: string }) => <div>{text}</div>;
-
 export const CarouselPage = () => {
   // const data = [
   //   {

@@ -1,6 +1,7 @@
 import { useUserContext } from '../../shared/context';
 import { NavBar } from '../../shared/nav/nav';
 import Marquee from '@/components/ui/marquee';
+import Image from 'next/image';
 
 export const HomePage = () => {
   const logos = [
@@ -51,10 +52,12 @@ export const HomePage = () => {
                 }}
               >
                 {logos.map((data, idx) => (
-                  <img
+                  <Image
                     key={idx}
                     src={data.img}
                     alt={data.name}
+                    width={200}
+                    height={300}
                     className="mx-auto h-full w-3/4 cursor-pointer rounded-xl border border-neutral-300 transition-all duration-300 hover:ring-1 hover:ring-neutral-300"
                   />
                 ))}

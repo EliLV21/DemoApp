@@ -1,7 +1,7 @@
 'use client';
 import { HomePage } from './components/pages/home/home';
 import { UserNameContext } from './components/shared/context';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { BoardPage } from './components/pages/board/board';
@@ -25,10 +25,14 @@ export default function Home() {
     },
   });
 
-  supabase.auth.signInWithPassword({
-    email: 'miriam.elizabeth.lv@gmail.com',
-    password: 'password',
-  });
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      supabase.auth.signInWithPassword({
+        email: 'miriam.elizabeth.lv@gmail.com',
+        password: 'password',
+      });
+    }
+  }, []);
 
   return (
     <div className="container">
