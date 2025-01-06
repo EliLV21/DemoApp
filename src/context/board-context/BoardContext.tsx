@@ -99,6 +99,7 @@ const boardReducer = (state: Board, action: BoardAction): Board => {
       Object.keys(newState.columns).forEach(column => {
         newState.columns[column] = newState.columns[column].filter(task => task.id !== taskRemoveId);
       });
+      supabase.from('demo-app').delete().eq('id', taskRemoveId);
       localStorage.setItem('board', JSON.stringify(newState));
       return newState;
     }
@@ -115,6 +116,12 @@ const boardReducer = (state: Board, action: BoardAction): Board => {
             [action.payload.source.droppableId]: reorder,
           },
         };
+
+        supabase
+          .from('demo-app')
+          .update({ type_column: action.payload.destination.droppableId })
+          .eq('id', movedTask.id);
+
         localStorage.setItem('board', JSON.stringify(newState));
         return newState;
       }

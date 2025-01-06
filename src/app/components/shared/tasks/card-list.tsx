@@ -29,7 +29,13 @@ export const CardList: React.FC<CardListProps> = ({
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <Droppable droppableId={listId} type={listType} isDropDisabled={isDropDisabled}>
+    <Droppable
+      droppableId={listId}
+      type={listType}
+      isCombineEnabled
+      ignoreContainerClipping={false}
+      isDropDisabled={isDropDisabled}
+    >
       {(dropProvided: DroppableProvided) => (
         <Card
           {...dropProvided.droppableProps}

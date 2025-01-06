@@ -37,7 +37,7 @@ export const BoardPage = () => {
       <div className="container p-8">
         <NavBar />
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="board" direction="horizontal" type="COLUMN">
+          <Droppable droppableId="board" direction="horizontal" isDropDisabled={false} type="COLUMN">
             {provided => (
               <ul
                 className={`p-[1.25rem] grid-cols-${Object.keys(boardState.ordered).length} gap-${

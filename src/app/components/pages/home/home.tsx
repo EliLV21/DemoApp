@@ -39,7 +39,14 @@ export const HomePage = () => {
         <NavBar />
         <div className="container relative flex items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background px-20 md:shadow-xl">
           <div className="w-full h-[100px]">
-            <h1 className="text-4xl text-center text-primary-500">Welcome</h1> <p>{user.name}</p>
+            {user ? (
+              <div>
+                <h1 className="text-4xl text-center text-primary-500">Welcome</h1>
+                <p>{user.name}</p>
+              </div>
+            ) : (
+              <p>Please log in</p>
+            )}
           </div>
           <div className="grid grid-cols-4 p-[2rem]">
             <div className="col-span-2 flex flex-row gap-4 [perspective:400px]">
