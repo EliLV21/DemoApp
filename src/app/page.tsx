@@ -28,16 +28,16 @@ export default function Home() {
 
   useEffect(() => {
     const signIn = async () => {
-      if (typeof window !== 'undefined') {
-        setIsClient(true);
-        const { error } = await supabase.auth.signInWithPassword({
-          email: 'miriam.elizabeth.lv@gmail.com',
-          password: 'password',
-        });
-        if (error) {
-          console.error('Error signing in:', error.message);
-        }
+      // if (typeof window !== 'undefined') {
+      setIsClient(true);
+      const { error } = await supabase.auth.signInWithPassword({
+        email: 'miriam.elizabeth.lv@gmail.com',
+        password: 'password',
+      });
+      if (error) {
+        console.error('Error signing in:', error.message);
       }
+      // }
     };
     signIn();
   }, [isClient]);

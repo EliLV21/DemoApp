@@ -51,19 +51,19 @@ export const TasksModal = ({
   const [tag, setTag] = useState('Low');
 
   const handleSubmitForm = async ({ task, description }: z.infer<typeof addTaskSchema>) => {
-    if (typeof window !== 'undefined') {
-      dispatch({
-        type: 'ADD_TASKS',
-        payload: {
-          id: Math.random().toString(),
-          created_at: new Date().toDateString(),
-          type_column: 'Backlog',
-          tag,
-          description,
-          task,
-        },
-      });
-    }
+    // if (typeof window !== 'undefined') {
+    dispatch({
+      type: 'ADD_TASKS',
+      payload: {
+        id: Math.random().toString(),
+        created_at: new Date().toDateString(),
+        type_column: 'Backlog',
+        tag,
+        description,
+        task,
+      },
+    });
+    // }
     setShowForm(!showForm);
     let tagTask;
     switch (tag) {

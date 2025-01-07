@@ -44,12 +44,14 @@ const CardItem: React.FC<CardItemProps> = ({ task, isDragging, provided }) => {
         <CardFooter className="flex justify-between">
           <div className="flex h-6 items-center gap-2">
             <CardDescription>
-              {typeof window !== 'undefined' &&
+              {
+                // typeof window !== 'undefined' &&
                 new Date(task.created_at).toLocaleDateString('en-US', {
                   month: 'long',
                   year: 'numeric',
                   day: 'numeric',
-                })}
+                })
+              }
             </CardDescription>
           </div>
           <CardDescription
