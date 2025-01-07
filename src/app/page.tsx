@@ -50,7 +50,7 @@ export default function Home() {
     <div className="container">
       <QueryClientProvider client={queryClient}>
         <UserNameContext.Provider value={defectValue}>
-          <Router>
+          <Router future={{ v7_startTransition: true }}>
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
