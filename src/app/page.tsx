@@ -15,6 +15,7 @@ export interface DefectValue {
 }
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
   const queryClient = new QueryClient();
 
   const [defectValue, setDefectValue] = useState<DefectValue>({
@@ -28,6 +29,7 @@ export default function Home() {
   useEffect(() => {
     const signIn = async () => {
       if (typeof window !== 'undefined') {
+        setIsClient(true);
         const { error } = await supabase.auth.signInWithPassword({
           email: 'miriam.elizabeth.lv@gmail.com',
           password: 'password',
@@ -38,7 +40,11 @@ export default function Home() {
       }
     };
     signIn();
-  }, []);
+  }, [isClient]);
+
+  if (!isClient) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="container">
