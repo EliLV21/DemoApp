@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  distDir: 'docs',
+  distDir: 'build',
   /* config options here */
   reactStrictMode: false,
   images: {
@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   assetPrefix: isProd ? 'https://elilv21.github.io/DemoApp/' : '',
-  basePath: isProd ? '/demo-app' : '',
+  basePath: isProd ? '/build' : '',
   env: {},
 };
 
