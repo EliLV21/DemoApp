@@ -1,6 +1,4 @@
 'use client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { BoardPage } from './components/pages/board/board';
 import { CarouselPage } from './components/pages/carousel/carousel';
 import supabase from '@/supabaseClient';
 import { NotesPage } from './components/pages/notes/notes';
@@ -8,6 +6,8 @@ import { Suspense, useEffect, useState } from 'react';
 import { HomePage } from './components/pages/home/home';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserNameContext } from './components/shared/context';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BoardPage } from './components/pages/board/board';
 
 export interface DefectValue {
   name: string;
@@ -28,16 +28,23 @@ export default function Home() {
 
   useEffect(() => {
     const signIn = async () => {
-      // if (typeof window !== 'undefined') {
       setIsClient(true);
+      const email = process.env.NEXT_PUBLIC_SUPABASE_EMAIL;
+      const password = process.env.NEXT_PUBLIC_SUPABASE_PASSWORD;
+
+      if (!email || !password) {
+        console.error('Supabase email or password is not defined');
+        return;
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
-        email: 'miriam.elizabeth.lv@gmail.com',
-        password: 'password',
+        email,
+        password,
       });
+
       if (error) {
         console.error('Error signing in:', error.message);
       }
-      // }
     };
     signIn();
   }, [isClient]);
