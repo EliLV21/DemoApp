@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   assetPrefix: isProd ? 'https://elilv21.github.io/DemoApp/' : '',
-  basePath: isProd ? '/build' : '',
+  basePath: isProd ? '/DemoApp' : '',
   env: {},
 };
 
